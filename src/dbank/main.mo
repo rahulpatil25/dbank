@@ -1,4 +1,5 @@
 import Debug "mo:base/Debug";
+import Int "mo:base/Int";
 
 actor DBank {
   var currentValue = 300;
@@ -17,9 +18,15 @@ actor DBank {
   // Decrease the currentValue by the amount
 
   public func withdraw(amount: Nat) {
-    currentValue -= amount;
-    Debug.print(debug_show (currentValue));
-  };
+
+    let tempValue: Int = currentValue - amount;
+    if (tempValue >= 0) {
+          currentValue -= amount;
+          Debug.print(debug_show (currentValue));
+    } else {
+      Debug.print("Amount too large, currentValue less than zero.");
+    }
+  }
 
 
 }
