@@ -1,5 +1,6 @@
 import Debug "mo:base/Debug";
 import Int "mo:base/Int";
+import Nat "mo:base/Nat";
 
 actor DBank {
   var currentValue = 300;
@@ -26,7 +27,10 @@ actor DBank {
     } else {
       Debug.print("Amount too large, currentValue less than zero.");
     }
-  }
+  };
 
+  public query func checkBalance(): async Nat {
+    return currentValue;
+  };
 
 }
